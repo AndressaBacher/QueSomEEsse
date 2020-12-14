@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!doctype html>
+    <html class="no-js" lang="">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Que som é esse?</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="manifest" href="site.webmanifest">
+      <link rel="apple-touch-icon" href="icon.png">
+      <link rel="stylesheet" href="css/reset.css">
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" type="text/css" href="font/material-icons.css"> 
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="font/material-icons.css"> 
+</head>
+<body>
+  <!-- page content -->
+    <section class="tela1"> 
+        <h1> Que som é esse? </h1>
+        <h4> Esse jogo tem como objetivo incentivar a diversão e o aprendizado ao mesmo tempo. Vários sons irão tocar juntos e você terá que identifica-los. Boa sorte e bom jogo!</h4>
+        <p> <img src="img/musica.png"></p>
+        <p> <button class="inicio"> Iniciar </button></p> 
+    </section>
+
+    <section class="tela2">
+      <h1>
+       Tempo: <span class="tempo">00</span>
+        
+      <p> Acertos: <span class="acertos">0</span> </p>
+      <p>Erros: <span class="erro">0</span> </p>
+      <button class="ajuda"> AJUDA </button>
+      </h1>
+        <h2>QUE SOM É ESSE?</h2>
+        <img src="img/som.png" class="som">
+       
+    
+        <div class="linha1">
+          <button class="botaoCerto"><img src="img/cats.png"></button>
+          <button class="botaoCerto"><img src="img/cao.png"></button>
+          <button class="botaoErrado"><img src="img/relogio.png"></button>
+        </div>
+    
+        <div class="linha2">
+          <button class="botaoErrado"><img src="img/chuva.png" id="esconder"></button>
+          <button class="botaoErrado"><img src="img/vaca.png"></button>
+          <button class="botaoErrado"><img src="img/mar.png"></button>
+        </div>
+    
+        <div class="linha3">
+          <button class="botaoErrado"><img src="img/elefante.png"></button>
+          <button class="botaoErrado"><img src="img/chaleira.png" id="esconder1"></button>
+          <button class="botaoErrado"><img src="img/galinha.png"></button>
+        </div>
+    </section>
+
+
+       <section class="tela3">
+        <h1>
+         Tempo: <span class="tempoo">00</span>
+          
+        <p> Acertos: <span class="acertoss">0</span> </p>
+        <p>Erros: <span class="erross">0</span> </p>
+        <button class="ajuda"> AJUDA </button>
+        </h1>
+          <h2>QUE SOM É ESSE?</h2>
+          <img src="img/som.png" class="som">
+         
+      
+          <div class="linha1">
+            <button class="botaoErrado"><img src="img/cats.png"></button>
+            <button class="botaoErrado"><img src="img/cao.png"></button>
+            <button class="botaoCerto"><img src="img/relogio.png"></button>
+          </div>
+      
+          <div class="linha2">
+            <button class="botaoCerto"><img src="img/chuva.png"></button>
+            <button class="botaoCerto"><img src="img/vaca.png"></button>
+            <button class="botaoErrado"><img src="img/mar.png"></button>
+          </div>
+      
+          <div class="linha3">
+            <button class="botaoErrado"><img src="img/elefante.png"></button>
+            <button class="botaoErrado"><img src="img/chaleira.png" id="esconder2"></button>
+            <button class="botaoErrado"><img src="img/galinha.png" id="esconder3"></button>
+          </div>
+       </section>
+        
+          <section class="tela4">
+
+            <h1>
+              Parabéns, você ganhou o jogo!! Veja seu resultado a seguir:
+            </h1>
+            <p></p>
+            <h2> 
+              Tempo: <span   class="tempoF"> 0 </span>
+            </h2>
+
+            <h2> 
+              Acertos: <span class="acertosF"> 0</span>
+            </h2>
+
+            <h2> 
+              Erros: <span class="errosF"> 0 </span>
+            </h2>
+          </section>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $("section.tela1 button.inicio").on("click", function(){
+            $("section").hide();
+            $("section.tela2").show();
+        });
+
+        $("section.tela2 img.som").on("click", function(){
+    
+          musica = new Audio("sons/gato.mp3");
+          musica.play();
+          musica2 = new Audio("sons/cao.mp3");
+          musica2.play();
+
+          setInterval(function(){
+          var tempo = parseInt($("span.tempo").text());
+          var somaT = tempo + 1;
+          if(somaT < 10){
+          somaT = "0"+ somaT;
+          }
+          $("span.tempo").text(somaT);
+          }, 1000);
+          });
+
+  $("section.tela2 button.botaoCerto").one("click", function(){
+        var acertos = parseInt($("span.acertos").text());
+        var soma = 0;
+        somaF = 0;
+        soma = acertos + 1;
+        somaF = soma;
+        $("section.tela2 span.acertos").text(soma);
+        
+        if(soma >= 2){
+          $("section.tela2").hide();
+          $("section.tela3").show();
+
+          setInterval(function(){
+         var tempoo = parseInt($("span.tempoo").text());
+          var somaTT = tempoo + 1;
+          if(somaTT < 10){
+          somaTT = "0"+ somaTT;
+          }
+          $("span.tempoo").text(somaTT);
+          }, 1000);
+
+  
+          musica.pause();
+          musica2.pause();
+          musica3 = new Audio("sons/relogio.mp3");
+          musica3.play();
+          musica4 = new Audio("sons/vaca.mp3");
+          musica4.play();
+          musica5 = new Audio("sons/chuva.mp3");
+          musica5.play();
+        }
+      });
+
+        $("section.tela2 button.botaoErrado").one("click", function(){
+        var erros = parseInt($("span.erro").text());
+        var somaE = 0;
+        somaEE = 0;
+        somaE = erros + 1;
+        somaEE = somaE;
+        $("section.tela2 span.erro").text(somaE);
+      });
+
+      //ir pra tela3
+
+      $("section.tela3 button.botaoCerto").one("click", function(){
+        var acertoss = parseInt($("span.acertoss").text());
+        var somaa = 0;
+        somaa = acertoss + 1;
+        somaF +=1;
+        $("section.tela3 span.acertoss").text(somaa);
+        
+        
+        if(somaa >= 3){
+          $("section.tela3").hide();
+          $("section.tela4").show();
+          $("section.tela4 span.acertosF").text(somaF);
+          musica3.pause();
+          musica4.pause();
+          musica5.pause();
+        }
+      });
+
+      $("section.tela3 button.botaoErrado").one("click", function(){
+        var erross = parseInt($("span.erross").text());
+        var somaE = 0;
+        somaE = erross + 1;
+        somaEE += 1;
+        $("section.tela3 span.erross").text(somaE);
+        $("section.tela4 span.errosF").text(somaEE);
+        $("section.tela4 span.tempoF").text(somaT);
+      });
+
+      $("section.tela2 button.ajuda").on("click",function(){   
+      $("#esconder").hide();
+      $("#esconder1").hide();
+  }); 
+
+  $("section.tela3 button.ajuda").on("click",function(){   
+      $("#esconder2").hide();
+      $("#esconder3").hide();
+  }); 
+     
+        
+
+    </script>
+   
+</body>
+</html>
